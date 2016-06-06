@@ -58,7 +58,7 @@
 
 (defn cents->dollars [data cent-ks dollar-ks]
   (let [kmap (zipmap cent-ks dollar-ks)
-        divide-by-100 (fn [m k] (update-in m [k] #(/ % 100.)))
+        divide-by-100 (fn [m k] (update-in m [k] #(bigdec (/ % 100))))
         ->dollars (fn [record]
                     (set/rename-keys
                      (reduce

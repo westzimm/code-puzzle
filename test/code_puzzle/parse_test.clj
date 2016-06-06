@@ -41,7 +41,7 @@
           (instance? Integer (:order-id (first parsed-file)))
           (instance? BigDecimal (:price-cents (first parsed-file))))
         (testing "cents keys and values are converted to dollars"
-          (is (= 110.5 ((first converted-to-dollars) :price-dollars))))
+          (is (= 110.5M ((first converted-to-dollars) :price-dollars))))
         (testing "data no longer contains cents keys"
           (is (false? (.contains [:price-cents :discount-cents]
                                  (first converted-to-dollars)))))))))
