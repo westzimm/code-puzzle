@@ -1,6 +1,6 @@
 (ns code-puzzle.parse
-  (:require [clojure.string :as str]
-            [clojure.set :as set]))
+  (:require [clojure.set :as set]
+            [clojure.string :as str]))
 
 (def num-columns [:order-id])
 (def amount-columns [:unit-price-cents

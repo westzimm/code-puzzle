@@ -1,15 +1,15 @@
 (ns code-puzzle.parse-test
-  (:require [code-puzzle.parse :refer :all]
-            [code-puzzle.service :refer :all]
-            [clojure.string :as str]
-            [clojure.test :refer :all]))
+  (:require [clojure.string :as str]
+            [clojure.test :refer :all]
+            [code-puzzle.parse :refer :all]
+            [code-puzzle.service :refer :all]))
 
 (def test-csv "resources/test.csv")
 (def test-psv "resources/test.psv")
 
 (def test-amt-col [:price-cents :discount-cents :price-dollarss
                    :discount-dollars])
-(def test-num-col [:order-id])
+(def test-num-cols [:order-id])
 
 (deftest kebab-keyword-test
   (testing "->kebab-keyword fn converts a string to a kebab-case keyword"
@@ -20,7 +20,7 @@
 (deftest parse-csv-test
   (testing "split-data separator"
     (with-redefs [amount-columns test-amt-col
-                  num-columns test-num-col]
+                  num-columns test-num-cols]
       (let [csv->data-interim (-> test-csv
                                   slurp
                                   str/lower-case
@@ -48,7 +48,7 @@
 (deftest parse-psv-test
   (testing "parse-file function can handle psv file as input"
     (with-redefs [amount-columns test-amt-col
-                  num-columns test-num-col]
+                  num-columns test-num-cols]
       (let [psv->data-interim (-> test-psv
                                   slurp
                                   str/lower-case
