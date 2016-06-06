@@ -7,9 +7,9 @@
 (def service-dev
   (::bootstrap/service-fn (bootstrap/create-servlet service/service)))
 
-(deftest hello-girl-endpoint
-  (testing "hello-girl response status and content-type"
-    (let [resp (response-for service-dev :get "/hello-girl")
+(deftest analytics-report-endpoint-test
+  (testing "response status and content-type for analytics/report"
+    (let [resp (response-for service-dev :get "/analytics/report")
           content-type (get-in resp [:headers "Content-Type"])]
       (is (= 200 (:status resp)))
-      (is (= "text/html;charset=UTF-8" content-type)))))
+      (is (= "application/json;charset=UTF-8" content-type)))))

@@ -1,14 +1,20 @@
-# code-puzzle
+### Start the server
+```
+lein run
+```
 
-A Clojure library designed to ... well, that part is up to you.
+### order-id-asc
 
-## Usage
+```bash
+curl http://localhost:8088/analytics/report\?order-by\=order-id-asc | python -m json.tool
+```
+### session-type-dec
 
-FIXME
+```bash
+curl http://localhost:8088/analytics/report\?order-by\=session-type-desc | python -m json.tool
+```
+### unit-price-dollars-asc
 
-## License
-
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+```bash
+curl http://localhost:8088/analytics/report\?order-by\=unit-price-dollars-asc | python -m json.tool
+```
